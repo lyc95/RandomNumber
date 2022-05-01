@@ -32,19 +32,18 @@ jobs:
       uses: slackapi/slack-github-action@v1.18.0
       with:
         payload: |
-      {
-        "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
-        "blocks": [
           {
-            "type": "section",
-            "text": {
-              "type": "mrkdwn",
-              "text": "Name: Li Youcheng \n Matriculation: A0249467M \n Email: youcheng.li@u.nus.edu \n Repo: ${{ github.repositoryUrl }} \n Image name: lyc95/random_numbers:v1.0 \n Image url:"
-            }
+            "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "Name: Li Youcheng \n Matriculation: A0249467M \n Email: youcheng.li@u.nus.edu \n Repo: ${{ github.repositoryUrl }} \n Image name: lyc95/random_numbers:v1.0 \n Image url:"
+                }
+              }
+            ]
           }
-        ]
-      }
-        
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
