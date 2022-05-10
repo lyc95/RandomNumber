@@ -10,7 +10,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2.4.2
       with:
-        ref: "v1.6"
+        ref: ${{ github.ref_name }}
 
     - name: Docker Login
       uses: docker/login-action@v1.14.1
@@ -22,7 +22,7 @@ jobs:
       uses: docker/build-push-action@v2.10.0
       with:
         push: true
-        tags: lyc95/random_num:v1.6
+        tags: lyc95/random_num:${{ github.ref_name }}
 
     - name: Send custom JSON data to Slack workflow
       id: slack
@@ -36,7 +36,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "Name: Li Youcheng \n Matriculation: A0249467M \n Email: youcheng.li@u.nus.edu \n Repo: ${{ github.repositoryUrl }} \n Image name: lyc95/random_numbers:v1.6 \n Image url: https://hub.docker.com/repository/docker/lyc95/random_num"
+                  "text": "Name: Li Youcheng \n Matriculation: A0249467M \n Email: youcheng.li@u.nus.edu \n Repo: ${{ github.repositoryUrl }} \n Image name: lyc95/random_numbers:${{ github.ref_name }} \n Image url: https://hub.docker.com/repository/docker/lyc95/random_num"
                 }
               }
             ]
